@@ -5,7 +5,7 @@ var React = window.React = require('react'),
 
 var db = new PouchDB('sources');
 var remoteCouch = "http://localhost:5984/sources";
-
+db.sync(remoteCouch, {live: true, retry: true}).on('error', console.log.bind(console));
 var TodoList = React.createClass({
   render: function() {
     var createItem = function(itemText) {
